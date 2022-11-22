@@ -16,27 +16,38 @@ namespace Microwave.Test.Unit
         public void Setup()
         {
             output = Substitute.For<IOutput>();
-            uut = new PowerTube(output);
+            uut = new PowerTube(output, PowerTube.PowerLevel.Low); 
         }
 
-        [TestCase(1)]
-        [TestCase(50)]
-        [TestCase(100)]
-        [TestCase(699)]
-        [TestCase(700)]
-        public void TurnOn_WasOffCorrectPower_CorrectOutput(int power)
+        [TestCase(PowerTube.PowerLevel.Low, 1)]
+        [TestCase(PowerTube.PowerLevel.Low, 1)]
+        [TestCase(PowerTube.PowerLevel.Low, 50)]
+        [TestCase(PowerTube.PowerLevel.Low, 100)]
+        [TestCase(PowerTube.PowerLevel.Low, (int)PowerTube.PowerLevel.Low - 1)]
+        [TestCase(PowerTube.PowerLevel.Low, (int)PowerTube.PowerLevel.Low)]
+        [TestCase(PowerTube.PowerLevel.Medium, 500)]
+        [TestCase(PowerTube.PowerLevel.Medium, 699)]
+        [TestCase(PowerTube.PowerLevel.Medium, 700)]
+        [TestCase(PowerTube.PowerLevel.Medium, (int)PowerTube.PowerLevel.Medium - 1)]
+        [TestCase(PowerTube.PowerLevel.Medium, (int)PowerTube.PowerLevel.Medium)]
+        [TestCase(PowerTube.PowerLevel.High, 810)]
+        [TestCase(PowerTube.PowerLevel.High, 810)]
+        [TestCase(PowerTube.PowerLevel.High, 810)]
+        public void TurnOn_WasOffCorrectPower_CorrectOutput(PowerTube.PowerLevel powerLevel,int power)
         {
+            uut.PowerLevelState = powerLevel;
             uut.TurnOn(power);
             output.Received().OutputLine(Arg.Is<string>(str => str.Contains($"{power}")));
         }
 
-        [TestCase(-5)]
-        [TestCase(-1)]
-        [TestCase(0)]
-        [TestCase(701)]
-        [TestCase(750)]
-        public void TurnOn_WasOffOutOfRangePower_ThrowsException(int power)
+        [TestCase(PowerTube.PowerLevel.Low, -5)]
+        [TestCase(PowerTube.PowerLevel.Low, -1)]
+        [TestCase(PowerTube.PowerLevel.Low, 0)]
+        [TestCase(PowerTube.PowerLevel.Low, 701)]
+        [TestCase(PowerTube.PowerLevel.Low, 750)]
+        public void TurnOn_WasOffOutOfRangePower_ThrowsException(PowerTube.PowerLevel powerLevel,int power)
         {
+            uut.PowerLevelState = powerLevel;
             Assert.Throws<System.ArgumentOutOfRangeException>(() => uut.TurnOn(power));
         }
 

@@ -41,7 +41,7 @@ namespace Microwave.Test.Integration
 
             light = new Light(output);
             display = new Display(output);
-            powerTube = new PowerTube(output);
+            powerTube = new PowerTube(output, PowerTube.PowerLevel.Low);
             timer = new Timer();
 
 
@@ -80,6 +80,7 @@ namespace Microwave.Test.Integration
         [Test]
         public void CookController_PowerTube_TurnOn_700W()
         {
+            powerTube.PowerLevelState = PowerTube.PowerLevel.Medium;
             for (int p = 50; p <= 700; p += 50)
             {
                 powerButton.Press();
@@ -151,7 +152,7 @@ namespace Microwave.Test.Integration
 
             light = new Light(output);
             display = new Display(output);
-            powerTube = new PowerTube(output);
+            powerTube = new PowerTube(output, PowerTube.PowerLevel.Low);
             var faketimer = Substitute.For<ITimer>();
 
             // Make a new cooker, with the 

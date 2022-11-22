@@ -41,7 +41,7 @@ namespace Microwave.Test.Integration
 
             timer = new Timer();
             display = new Display(output);
-            powerTube = new PowerTube(output);
+            powerTube = new PowerTube(output, PowerTube.PowerLevel.Low);
 
             light = new Light(output);
 
@@ -141,6 +141,7 @@ namespace Microwave.Test.Integration
         [Test]
         public void UserInterface_CookController_StartCooking_700W()
         {
+            powerTube.PowerLevelState = PowerTube.PowerLevel.Medium;
             for (int p = 50; p <= 700; p += 50)
             {
                 powerButton.Pressed += Raise.Event();
