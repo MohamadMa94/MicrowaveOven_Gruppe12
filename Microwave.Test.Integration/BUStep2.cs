@@ -19,6 +19,7 @@ namespace Microwave.Test.Integration
         private PowerTube powerTube;
         private CookController cooker;
         private Buzzer buzzer;
+
         private UserInterface ui;
         private Light light;
 

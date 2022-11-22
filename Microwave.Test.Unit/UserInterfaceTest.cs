@@ -19,6 +19,7 @@ namespace Microwave.Test.Unit
 
         private IDisplay display;
         private ILight light;
+        private IBuzzer buzzer;
 
         private ICookController cooker;
 
@@ -37,7 +38,7 @@ namespace Microwave.Test.Unit
                 powerButton, timeButton, startCancelButton,
                 door,
                 display,
-                light,
+                light, buzzer,
                 cooker);
         }
 

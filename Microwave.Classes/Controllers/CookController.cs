@@ -36,6 +36,7 @@ namespace Microwave.Classes.Controllers
             myDisplay = display;
             myPowerTube = powerTube;
             myBuzzer = buzzer;
+
             timer.Expired += new EventHandler(OnTimerExpired);
             timer.TimerTick += new EventHandler(OnTimerTick);
         }
