@@ -14,6 +14,8 @@ namespace Microwave.Classes.Boundary
             myOutput = output;
         }
 
+        
+
         public void TurnOn(int power)
         {
             if (power < 1 || 700 < power)
