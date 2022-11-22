@@ -30,7 +30,8 @@ namespace Microwave.Classes.Boundary
         {
             if (power < 1 || (int)PowerLevelState < power)
             {
-                throw new ArgumentOutOfRangeException("power", power, "Must be between 1 and 700 (incl.)");
+                //throw new ArgumentOutOfRangeException("power", power, "Must be between 1 and 700 (incl.)");
+                throw new ArgumentOutOfRangeException("power", power, "Must be between 1 and 700  (incl.)");
             }
 
             if (IsOn)

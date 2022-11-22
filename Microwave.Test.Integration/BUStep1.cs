@@ -26,7 +26,7 @@ namespace Microwave.Test.Integration
 
             timer = new Timer();
             display = new Display(output);
-            powerTube = new PowerTube(output);
+            powerTube = new PowerTube(output, PowerTube.PowerLevel.Low);
 
             ui = Substitute.For<IUserInterface>();
 
@@ -38,6 +38,7 @@ namespace Microwave.Test.Integration
         [Test]
         public void CookController_PowerTube_TurnOn_50W()
         {
+            powerTube.PowerLevelState = PowerTube.PowerLevel.Low;
             cooker.StartCooking(50, 60);
 
             output.Received().OutputLine(Arg.Is<string>(str => str.Contains("50")));
@@ -46,6 +47,7 @@ namespace Microwave.Test.Integration
         [Test]
         public void CookController_PowerTube_TurnOn_150W()
         {
+            powerTube.PowerLevelState = PowerTube.PowerLevel.Low;
             cooker.StartCooking(150, 60);
 
             output.Received().OutputLine(Arg.Is<string>(str => str.Contains("150")));
@@ -54,6 +56,7 @@ namespace Microwave.Test.Integration
         [Test]
         public void CookController_PowerTube_TurnOn_700W()
         {
+            powerTube.PowerLevelState = PowerTube.PowerLevel.Medium;
             cooker.StartCooking(700, 60);
 
             output.Received().OutputLine(Arg.Is<string>(str => str.Contains("700")));
