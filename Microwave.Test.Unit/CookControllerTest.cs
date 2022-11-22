@@ -15,6 +15,7 @@ namespace Microwave.Test.Unit
         private ITimer timer;
         private IDisplay display;
         private IPowerTube powerTube;
+        private IBuzzer buzzer;
 
         [SetUp]
         public void Setup()
@@ -24,7 +25,7 @@ namespace Microwave.Test.Unit
             display = Substitute.For<IDisplay>();
             powerTube = Substitute.For<IPowerTube>();
 
-            uut = new CookController(timer, display, powerTube, ui);
+            uut = new CookController(timer, display, powerTube,buzzer, ui);
         }
 
         [Test]
