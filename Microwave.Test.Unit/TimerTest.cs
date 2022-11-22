@@ -147,5 +147,45 @@ namespace Microwave.Test.Unit
 
             Assert.That(uut.TimeRemaining, Is.EqualTo(5-ticks*1));
         }
+
+        [Test]
+        public void Extra_Time_Added_TimeRemainingEquals20()
+        {
+            //Set start time to 60sec
+            uut.Start(60);
+
+            //Add 15sec to TimeRemaining
+            uut.AddTFifteenSes();
+
+            Assert.That(uut.TimeRemaining, Is.EqualTo(75));
+        }
+        [Test]
+        public void Extra_Time_Added_TimeRemainingEquals35()
+        {
+            //Set start time to 5sec
+            uut.Start(5);
+
+            //Add 30sec to TimeRemaining
+            uut.AddThirtySes();
+
+            Assert.That(uut.TimeRemaining, Is.EqualTo(35));
+        }
+        [Test]
+        public void Extra_Time_Added_TimeRemainingEquals40()
+        {
+            //Set start time to 10sec
+            uut.Start(10);
+
+            //Add 15sec to TimeRemaining
+            uut.AddTFifteenSes();
+            //Add 30sec to TimeRemaining
+            uut.AddThirtySes();
+
+           
+
+            Assert.That(uut.TimeRemaining, Is.EqualTo(55));
+        }
+
+
     }
 }
