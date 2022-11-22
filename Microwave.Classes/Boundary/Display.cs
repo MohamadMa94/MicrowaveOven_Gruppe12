@@ -1,5 +1,6 @@
 ﻿using Microwave.Classes.Interfaces;
 
+
 namespace Microwave.Classes.Boundary
 {
     public class Display : IDisplay
