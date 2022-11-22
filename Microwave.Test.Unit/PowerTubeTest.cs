@@ -40,13 +40,14 @@ namespace Microwave.Test.Unit
             output.Received().OutputLine(Arg.Is<string>(str => str.Contains($"{power}")));
         }
 
-        [TestCase(-5)]
-        [TestCase(-1)]
-        [TestCase(0)]
-        [TestCase(701)]
-        [TestCase(750)]
-        public void TurnOn_WasOffOutOfRangePower_ThrowsException(int power)
+        [TestCase(PowerTube.PowerLevel.Low, -5)]
+        [TestCase(PowerTube.PowerLevel.Low, -1)]
+        [TestCase(PowerTube.PowerLevel.Low, 0)]
+        [TestCase(PowerTube.PowerLevel.Low, 701)]
+        [TestCase(PowerTube.PowerLevel.Low, 750)]
+        public void TurnOn_WasOffOutOfRangePower_ThrowsException(PowerTube.PowerLevel powerLevel,int power)
         {
+            uut.PowerLevelState = powerLevel;
             Assert.Throws<System.ArgumentOutOfRangeException>(() => uut.TurnOn(power));
         }
 
