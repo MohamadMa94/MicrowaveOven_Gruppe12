@@ -6,6 +6,7 @@ namespace Microwave.App
 {
     class Program
     {
+        static PowerTube.PowerLevel power = PowerTube.PowerLevel.Medium;
         static void Main(string[] args)
         {
             Button startCancelButton = new Button();
@@ -18,7 +19,7 @@ namespace Microwave.App
 
             Display display = new Display(output);
 
-            PowerTube powerTube = new PowerTube(output);
+            PowerTube powerTube = new PowerTube(output,power);
 
             Light light = new Light(output);
 
