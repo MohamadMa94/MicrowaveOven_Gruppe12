@@ -151,7 +151,7 @@ namespace Microwave.Test.Unit
         [Test]
         public void Extra_Time_Added_TimeRemainingEquals20()
         {
-            //Set start time to 60sec
+            //Set start time to 5sec
             uut.Start(5);
 
             //Add 15sec to TimeRemaining
