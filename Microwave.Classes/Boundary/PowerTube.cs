@@ -24,8 +24,6 @@ namespace Microwave.Classes.Boundary
             PowerLevelState = powerLevelState;
         }
 
-        
-
         public void TurnOn(int power)
         {
             if (power <= 0 || (int)PowerLevelState < power)
@@ -39,7 +37,7 @@ namespace Microwave.Classes.Boundary
             }
 
             myOutput.OutputLine($"PowerTube works with {power}");
-            IsOn = true;
+            IsOn = true; 
         }
 
         public void TurnOff()
