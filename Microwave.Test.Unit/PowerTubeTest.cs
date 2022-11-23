@@ -46,7 +46,7 @@ namespace Microwave.Test.Unit
         [TestCase(PowerTube.PowerLevel.Low, 501)]
         [TestCase(PowerTube.PowerLevel.Medium, 499)]
         [TestCase(PowerTube.PowerLevel.Medium, 801)]
-        [TestCase(PowerTube.PowerLevel.High, 800)]
+        [TestCase(PowerTube.PowerLevel.High, 790)]
         [TestCase(PowerTube.PowerLevel.High, 1001)]
         public void TurnOn_WasOffOutOfRangePower_ThrowsException(PowerTube.PowerLevel powerLevel,int power)
         {

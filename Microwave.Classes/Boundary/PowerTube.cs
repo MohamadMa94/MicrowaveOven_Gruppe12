@@ -37,14 +37,14 @@ namespace Microwave.Classes.Boundary
             }
             if (PowerLevelState == PowerLevel.Medium)
             {
-                if (power <= (int)PowerLevel.Low || (int)PowerLevel.Medium < power)
+                if (power < (int)PowerLevel.Low || (int)PowerLevel.Medium < power)
                 {
                     throw new ArgumentOutOfRangeException("power", power, $"Must be between {(int)PowerLevel.Low} and {(int)PowerLevel.Medium} (incl.)");
                 }
             }
             if (PowerLevelState == PowerLevel.High)
             {
-                if (power <= (int)PowerLevel.Medium || (int)PowerLevel.High < power)
+                if (power < (int)PowerLevel.Medium || (int)PowerLevel.High < power)
                 {
                     throw new ArgumentOutOfRangeException("power", power, $"Must be between {(int)PowerLevel.Medium} and {(int)PowerLevel.High} (incl.)");
                 }
