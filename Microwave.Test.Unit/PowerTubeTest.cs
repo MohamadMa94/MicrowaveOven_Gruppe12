@@ -31,8 +31,7 @@ namespace Microwave.Test.Unit
         [TestCase(PowerTube.PowerLevel.Medium, (int)PowerTube.PowerLevel.Medium - 1)]
         [TestCase(PowerTube.PowerLevel.Medium, (int)PowerTube.PowerLevel.Medium)]
         [TestCase(PowerTube.PowerLevel.High, 810)]
-        [TestCase(PowerTube.PowerLevel.High, 810)]
-        [TestCase(PowerTube.PowerLevel.High, 810)]
+        [TestCase(PowerTube.PowerLevel.High, 910)]
         public void TurnOn_WasOffCorrectPower_CorrectOutput(PowerTube.PowerLevel powerLevel,int power)
         {
             uut.PowerLevelState = powerLevel;
