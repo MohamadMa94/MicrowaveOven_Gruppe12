@@ -28,11 +28,11 @@ namespace Microwave.Classes.Boundary
 
         public void TurnOn(int power)
         {
-            if (power < 1 || (int)PowerLevelState < power)
+            if (power <= 0 || (int)PowerLevelState < power)
             {
-                throw new ArgumentOutOfRangeException("power", power, "Must be between 1 and 700  (incl.)");
+                throw new ArgumentOutOfRangeException("power", power, $"Must be between 1 and {(int)PowerLevelState} (incl.)");
             }
-
+            
             if (IsOn)
             {
                 throw new ApplicationException("PowerTube.TurnOn: is already on");
