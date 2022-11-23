@@ -70,9 +70,22 @@ namespace Microwave.Classes.Controllers
             }
         }
 
-        public void TimeButton()
+    
+
+        public void TimeButtonFifteenSes()
         {
-            throw new NotImplementedException();
+            if (isCooking)
+            {
+                myTimer.AddTFifteenSes();
+            }
+        }
+
+        public void TimeButtonThirtySes()
+        {
+            if (isCooking)
+            {
+                myTimer.AddThirtySes();
+            }
         }
     }
 }
