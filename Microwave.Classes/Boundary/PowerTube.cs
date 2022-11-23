@@ -28,10 +28,26 @@ namespace Microwave.Classes.Boundary
 
         public void TurnOn(int power)
         {
-            if (power < 1 || (int)PowerLevelState < power)
+            if (PowerLevelState == PowerLevel.Low)
             {
-                //throw new ArgumentOutOfRangeException("power", power, "Must be between 1 and 700  (incl.)");
-                throw new ArgumentOutOfRangeException("power", power, $"Must be between {PowerLevelState-1} and {PowerLevelState}  (incl.)");
+                if (power <= 0 || (int)PowerLevelState < power)
+                {
+                    throw new ArgumentOutOfRangeException("power", power, $"Must be between 1 and 500 (incl.)");
+                }
+            }
+            if (PowerLevelState == PowerLevel.Medium)
+            {
+                if (power <= (int)PowerLevel.Low || (int)PowerLevel.Medium < power)
+                {
+                    throw new ArgumentOutOfRangeException("power", power, $"Must be between 500 and 800 (incl.)");
+                }
+            }
+            if (PowerLevelState == PowerLevel.High)
+            {
+                if (power <= (int)PowerLevel.Medium || (int)PowerLevel.High < power)
+                {
+                    throw new ArgumentOutOfRangeException("power", power, $"Must be between 800 and 1000 (incl.)");
+                }
             }
 
             if (IsOn)
